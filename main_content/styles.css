@@ -1,0 +1,153 @@
+@import url(../styles.css);
+
+:root {
+    --main-background-gradient-1: #f8f9f8;
+    --main-background-gradient-2: #e3e5e3;
+    --main-background-gradient-3: #a96cdb;
+
+    --box-background-open: #252441;
+    --box-background-close: #252441;
+
+    --font-color: #faf8f7;
+
+    --box-size-close: 8vh;
+    --box-size-open: 40vh;
+}
+
+* {
+    margin: 0px;
+    border: 0px;
+    padding: 0px;
+    gap: 0px;
+}
+
+/*Body background*/
+body {
+    background: linear-gradient(120deg, var(--main-background-gradient-1) 0%, var(--main-background-gradient-2) 70%, var(--main-background-gradient-3) 100%);
+
+    background-size: 200%;
+
+    animation: gradient_animation 10s infinite;
+
+    background-attachment: fixed;
+}
+
+/*Animation for body backgorund*/
+@keyframes gradient_animation {
+    0% {
+        background-position: 0% 0%;
+    }
+
+    33% {
+        background-position: 0% 50%;
+    }
+
+    66% {
+        background-position: 50% 0%;
+    }
+
+    100% {
+        background-position: 0% 100%;
+
+
+    }
+}
+
+.main {
+    width: 100vw;
+    height: 100vh;
+}
+
+.main_box {
+    display: flex;
+
+    height: inherit;
+
+    justify-content: center;
+    align-items: center;
+}
+
+.btn {
+    display: none;
+}
+
+label {
+    display: flex;
+    width: 50vh;
+    height: 50vh;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.box {
+    height: var(--box-size-close);
+    width: var(--box-size-close);
+
+    background-color: var(--box-background-close);
+
+    border-radius: 50%;
+
+    cursor: pointer;
+}
+
+.animation_open {
+    animation: open_rotation_and_size .8s forwards;
+}
+
+.animation_close {
+    animation: close_rotation_and_size .6s forwards;
+
+}
+
+/*Animation when circle is activated*/
+@keyframes open_rotation_and_size {
+    0% {
+        height: var(--box-size-close);
+        width: var(--box-size-close);
+
+        border-radius: 50%;
+
+        transform: rotate(270deg);
+
+        background-color: var(--box-background-close);
+    }
+
+    100% {
+        height: var(--box-size-open);
+        width: var(--box-size-open);
+
+        border-radius: 25px;
+
+        transform: rotate(360deg);
+
+        background-color: var(--box-background-open);
+    }
+
+}
+
+/*Animation when circle is closed*/
+@keyframes close_rotation_and_size {
+    0% {
+        height: var(--box-size-open);
+        width: var(--box-size-open);
+
+        border-radius: 25px;
+
+        transform: rotate(-270deg);
+
+        background-color: var(--box-background-open);
+    }
+
+    100% {
+        height: var(--box-size-close);
+        width: var(--box-size-close);
+
+        border-radius: 50%;
+
+        transform: rotate(-360deg);
+
+        background-color: var(--box-background-close);
+    }
+
+}

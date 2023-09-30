@@ -1,0 +1,123 @@
+:root {
+    --loader_background: #252441;
+    --loader-circle: #faf8f7;
+
+    --main-content-background: #faf8f7;
+
+    --circle_size: 12vh;
+}
+
+* {
+    margin: 0px;
+    border: 0px;
+    padding: 0px;
+    gap: 0px;
+
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+/* Start loader */
+.main_loader {
+    display: grid;
+    grid-template-columns: 50vw;
+
+    background-color: var(--loader-circle);
+}
+
+.medium_backgorund {
+    width: 50vw;
+    height: 100vh;
+    background-color: var(--loader_background);
+}
+
+.left {
+    position: absolute;
+
+    grid-column: 1;
+
+    display: flex;
+    justify-content: end;
+
+    animation: middle_to_left 1.5s forwards 1.05s;
+}
+
+.right {
+    grid-column: 2;
+
+    position: relative;
+    display: flex;
+    justify-content: start;
+
+    animation: middle_to_right 1.5s forwards 1.05s;
+}
+
+.semicircle {
+    position: absolute;
+    animation: up_to_middle_and_small_to_big 1s forwards;
+}
+
+svg {
+    fill: var(--loader-circle);
+}
+
+/*Complete circle animation*/
+@keyframes up_to_middle_and_small_to_big {
+    0% {
+        top: -5rem;
+        width: 1rem;
+        height: 1rem;
+        background-color: var(--loader_background);
+    }
+
+    100% {
+        top: 43.5%;
+        width: var(--circle_size);
+        height: var(--circle_size);
+    }
+}
+
+/*Semicercle left animation*/
+@keyframes middle_to_left {
+    0% {
+        width: 50vw;
+    }
+
+    100% {
+        width: 0vw;
+    }
+}
+
+/*Semicercle right animation*/
+@keyframes middle_to_right {
+    0% {
+        margin-left: 0px;
+    }
+
+    100% {
+        margin-left: 50vw;
+    }
+}
+
+/*JS add classes*/
+.display_none {
+    display: none;
+}
+
+.display_block {
+    display: block;
+}
+
+
+/*Set size for main and iframe*/
+.main_content {
+    width: 100vw;
+    height: 100vh;
+
+    background-color: var(--main-content-background);
+}
+
+iframe {
+    width: 100vw;
+    height: 100vh;
+}
